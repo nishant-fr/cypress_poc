@@ -103,7 +103,7 @@ Setting up the repository and launching the test app, follow the following comma
 
 ```bash
 create a folder locally
-git clone https://github.com/nishant-fr/embleema-test.git
+git clone https://github.com/nishant-fr/cypress_poc.git
 docker compose up --build
 ```
 
