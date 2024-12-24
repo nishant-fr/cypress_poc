@@ -1,0 +1,902 @@
+{
+	"info": {
+		"_postman_id": "0ebb1ce6-eda3-4c51-a2d8-13167da734d1",
+		"name": "Embleema Test App Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39279008"
+	},
+	"item": [
+		{
+			"name": "LoginApiTests",
+			"item": [
+				{
+					"name": "LoginApiTest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"// Store token as an environment variable\r",
+									"pm.environment.set(\"authToken\", responseData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"app@testing.com\",\r\n  \"password\": \"apptesting\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginInvalidIDApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"to@to.c\",\r\n  \"password\": \"tototo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginInvalidPasswordApiTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"to@to.com\",\r\n  \"password\": \"t\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ResetPasswordApiTests",
+			"item": [
+				{
+					"name": "ResetPasswordTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"jha_nishant@outlook.fr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPasswordInvalidApiTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"jha_nis@outlook.fr\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NewUserRestistrationApiTests",
+			"item": [
+				{
+					"name": "NewUserRegistrationApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"apitestingnew@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidEmailApiTest Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidPasswordApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"t\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidFirstNameApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"T\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidLastNameApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"T\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidPhoneApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidPhysicianFirstNameApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"T\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidPhysicianLastNameApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"T\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidCareSiteNameApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"T\",\r\n        \"address\": \"TestAddress\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewUserRegistrationInvalidCareSiteAddressApiTest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testing@api.com\",\r\n    \"password\": \"testing\",\r\n    \"firstName\": \"testing\",\r\n    \"lastName\": \"testing\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"Api\",\r\n        \"lastName\": \"Api\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"Test\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ExisitingUserModificationApiTests",
+			"item": [
+				{
+					"name": "ExistingUserModificationApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"WaleI\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api10101.com\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidFirstNameApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"T\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidLastNameApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"T\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidEmailApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api\",\r\n    \"phone\": \"0101010101\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidPhoneApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidUsualPhysicianFirstNameApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"A\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidUsualPhysicianLastNameApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"A\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSite\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidUsualCareSiteNameApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"T\",\r\n        \"address\": \"TestAddress\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ExistingUserModificationInvalidUsualCareSiteAdressApiTest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usualPhysician\": {\r\n        \"firstName\": \"ApiModification\",\r\n        \"lastName\": \"ApiModification\",\r\n        \"title\": \"Dr.\"\r\n    },\r\n    \"usualCareSite\": {\r\n        \"name\": \"TestSiteName\",\r\n        \"address\": \"Test\"\r\n    },\r\n    \"_id\": \"671a811f3c324cb77420da21\",\r\n    \"firstName\": \"ApiTest\",\r\n    \"lastName\": \"ApiTest\",\r\n    \"email\": \"api@api.com\",\r\n    \"phone\": \"010101010a\",\r\n    \"socialSecurityId\": \"0101010101\",\r\n    \"bloodType\": \"B-\",\r\n    \"sex\": \"Male\",\r\n    \"birthDate\": \"1990-10-02\",\r\n    \"__v\": 0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzFhNDRhZDNjMzI0Y2I3NzQyMGQ5ODAiLCJpYXQiOjE3Mjk4NDI5ODgsImV4cCI6MTcyOTg0NjU4OH0.Hw_XG9pZcume9sxTg5ukH3oo7DOmunFfyA2VjDTlt9A",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
