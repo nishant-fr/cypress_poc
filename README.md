@@ -61,8 +61,6 @@ e2e
 
 The **Features** folder can contains 4 different features which contain scenarios to each page in the application. The **PageObjects** contains declaration of WebElements and their methods. The The **StepDefinitions** folder contains the corresponding test step implementations where the methods in the page objects are called.
 
-Under **/cypress/manual_test_plan** folder, there is Manual Test Plan excel file which contains 4 sheets. Each Sheet corresponds to a test suite with test scenario title defined in it. I've also added an PDF format as well for the Manual Test Plan. A manual tester can use whichever it suits best to perform manual scenarios.
-
 ### 4. Running Tests
 
 Setting up the repository and launching the test app, follow the following command:
